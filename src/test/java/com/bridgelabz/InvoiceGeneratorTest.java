@@ -52,4 +52,23 @@ public class InvoiceGeneratorTest {
         double totalFare = generator.calculateFare(null);
         assertEquals(0, totalFare);
     }
+    /**
+     * UC3 Test - Invoice Summary
+     */
+    @Test
+    public void givenMultipleRides_ShouldReturnInvoiceSummary() {
+
+        InvoiceGenerator generator = new InvoiceGenerator();
+
+        Ride[] rides = {
+                new Ride(2.0, 5),   // 25
+                new Ride(0.1, 1)    // 5
+        };
+
+        InvoiceSummary summary = generator.calculateInvoiceSummary(rides);
+
+        InvoiceSummary expected = new InvoiceSummary(2, 30);
+
+        assertEquals(expected, summary);
+    }
 }
