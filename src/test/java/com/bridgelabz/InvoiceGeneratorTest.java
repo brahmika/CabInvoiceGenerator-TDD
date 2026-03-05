@@ -71,4 +71,16 @@ public class InvoiceGeneratorTest {
 
         assertEquals(expected, summary);
     }
+    @Test
+    public void givenPremiumRide_ShouldReturnCorrectFare() {
+
+        InvoiceGenerator generator = new InvoiceGenerator();
+
+        Ride ride = new Ride(2.0, 5, RideType.PREMIUM);
+
+        double fare = generator.calculateFare(ride);
+
+        // (2 * 15) + (5 * 2) = 30 + 10 = 40
+        assertEquals(40, fare);
+    }
 }

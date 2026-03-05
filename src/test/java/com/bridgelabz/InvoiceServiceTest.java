@@ -34,4 +34,16 @@ public class InvoiceServiceTest {
 
         assertEquals(new InvoiceSummary(0, 0), summary);
     }
+    @Test
+    public void givenShortPremiumRide_ShouldReturnMinimumFare() {
+
+        InvoiceGenerator generator = new InvoiceGenerator();
+
+        Ride ride = new Ride(0.1, 1, RideType.PREMIUM);
+
+        double fare = generator.calculateFare(ride);
+
+        // Premium minimum fare = 20
+        assertEquals(20, fare);
+    }
 }
